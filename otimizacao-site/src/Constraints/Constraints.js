@@ -77,6 +77,7 @@ class Constraints extends React.Component {
   state = {
     ingrediente: '',
     quantidade: 0,
+    valor: 0,
   };
 
   handleChangeValue = () => {
@@ -128,6 +129,19 @@ class Constraints extends React.Component {
                 label="Quantidade"
                 value={this.state.quantidade}
                 onChange={this.handleChange('quantidade')}
+                type="number"
+                className={classes.textField}
+                InputLabelProps={{
+                    shrink: true,
+                }}
+                margin="normal"
+                variant="outlined"
+            />
+            <TextField
+                id="outlined-number"
+                label="Valor"
+                value={this.state.valor}
+                onChange={this.handleChange('valor')}
                 type="number"
                 className={classes.textField}
                 InputLabelProps={{
