@@ -14,6 +14,27 @@ import InputBase from '@material-ui/core/InputBase';
 
 import './Constraints.scss';
 
+const ingredients = [
+    'Leite',
+    'Ovos',
+    'Banana Caturra',
+    'Açúcar Refinado',
+    'Farinha de trigo',
+    'Fermento',
+    'Achocolatado',
+    'Manteiga',
+    'Leite condensado',
+    'Laranja',
+    'Óleo',
+    'Açúcar Cristal',
+    'Cenouras',
+    'Fubá',
+    'Maisena',
+    'Queijo branco',
+    'Limão',
+    'Mexerica'
+];
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -101,6 +122,15 @@ class Constraints extends React.Component {
       onDelete(id, ingrediente);
   }
 
+  renderMenuItem = () => {
+    const { isDisabled } = this.props;
+      const menuItens = [];
+      for(const item of ingredients) {
+        menuItens.push(<MenuItem value={item} disabled={isDisabled(item)}>{item}</MenuItem>)
+      }
+      return menuItens
+  }
+
   render() {
     const { classes, isDisabled } = this.props;
 
@@ -115,13 +145,7 @@ class Constraints extends React.Component {
                     onChange={this.handleChange('ingrediente')}
                     input={<BootstrapInput name="ingrediente" id="ingrediente-customized-select" />}
                 >
-                <MenuItem value="Ovo" disabled={isDisabled("Ovo")}>Ovo</MenuItem>
-                <MenuItem value="Leite" disabled={isDisabled("Leite")}>Leite</MenuItem>
-                <MenuItem value="Fubá" disabled={isDisabled("Fubá")}>Fubá</MenuItem>
-                <MenuItem value="Farinha de trigo" disabled={isDisabled("Farinha de trigo")}>Farinha de trigo</MenuItem>
-                <MenuItem value="Chocolate em pó" disabled={isDisabled("Chocolate em pó")}>Chocolate em pó</MenuItem>
-                <MenuItem value="Leite ninho" disabled={isDisabled("Leite ninho")}>Leite ninho</MenuItem>
-                <MenuItem value="Fermento" disabled={isDisabled("Fermento")}>Fermento</MenuItem>
+                {this.renderMenuItem()}
                 </Select>
             </FormControl>
             <TextField
