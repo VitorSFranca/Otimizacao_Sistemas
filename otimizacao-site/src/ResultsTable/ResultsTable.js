@@ -51,15 +51,17 @@ class ResultsTable extends Component {
                     {this.renderResults(data)}
                     {this.renderProfit(data)}
                 </div>
-                <Button
-                    variant="outlined"
-                    size="small"
-                    color="primary"
-                    className={classes}
-                    onClick={handleClick}
-                    >
-                    Retornar
-                </Button>
+                <div id="backDiv">
+                    <Button
+                        variant="outlined"
+                        size="small"
+                        color="primary"
+                        className={classes}
+                        onClick={handleClick}
+                        >
+                        Retornar
+                    </Button>
+                </div>
             </div>);
     }
 }

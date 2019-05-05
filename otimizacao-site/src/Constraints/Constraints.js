@@ -110,11 +110,13 @@ class Constraints extends React.Component {
   }
 
   handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    },
-        this.handleChangeValue
-    );
+    if(((name === 'quantidade' || name === 'valor') && event.target.value >= 0) || name === 'ingrediente' ) {
+      this.setState({
+        [name]: event.target.value,
+      },
+          this.handleChangeValue
+      );
+    }
   };
 
   handleOnClick = () => {

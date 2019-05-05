@@ -12,6 +12,6 @@ app.post('/solve', function (req, res) {
   res.send(res.json(solver.solve(req.body)));
 });
 
-app.listen(5000, function () {
-  console.log('Server listening on port 5000!');
+app.listen(process.env.PORT || 4000, function () {
+  console.log('Server listening!');
 });
