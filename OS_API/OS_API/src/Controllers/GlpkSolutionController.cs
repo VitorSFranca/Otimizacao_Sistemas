@@ -16,7 +16,7 @@ namespace OS_API.Controllers
         // GET: api/GlpkSolution
         public string Get(int leite, int ovos, int cenoura, int banana, int fermento
                           , int achocolatado, int limao, int manteiga, int mexerica
-                          , int farinhaDeTrigo, int acucarCristal, int oleo)
+                          , int farinhaDeTrigo, int acucarCristal, int oleo, int acucarRefinado)
         {
             IngredientsEntity entity = new IngredientsEntity();
             entity.qtdLeite = leite;
@@ -31,6 +31,7 @@ namespace OS_API.Controllers
             entity.qtdFarinhaDeTrigo = farinhaDeTrigo;
             entity.qtdAcucarCristal = acucarCristal;
             entity.qtdOleo = oleo;
+            entity.qtdAcucarRefinado = acucarRefinado;
 
             return GlpkService.getSolution(entity);
         }

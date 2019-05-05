@@ -7,6 +7,7 @@ namespace OS_API.Entitys
 {
     public class IngredientsEntity
     {
+        public double qtdAcucarRefinado { get; set; }
         public double qtdLeite { get; set; }
         public double qtdOvos { get; set; }
         public double qtdCenoura { get; set; }
