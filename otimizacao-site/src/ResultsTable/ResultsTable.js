@@ -6,17 +6,39 @@ import './ResultsTable.scss';
 
 class ResultsTable extends Component {
 
-    renderResults = data => data.map(item => (
-        <div className="itemDiv">
-            <div className="itemName">{item.ingredient}</div>
-            <div className="itemQt">{item.quantity}</div>
-        </div>
-    ));
+    cakeMapping = {
+        x1: 'Bolo de Cenoura com Calda',
+        x2: 'Bolo de Cenoura',
+        x3: 'Bolo de Chocolate com Calda',
+        x4: 'Bolo de Chocolate',
+        x5: 'Bolo de Mexerica',
+        x6: 'Bolo de Laranja',
+        x7: 'Bolo de Fubá',
+        x8: 'Bolo de Limão',
+        x9: 'Bolo de Banana'
+    }
+
+    renderResults = data => Object.keys(data).map((item) => {
+        if(this.cakeMapping[item]) {
+            return (
+                <div className="itemDiv">
+                    <div className="itemName">{this.cakeMapping[item]}</div>
+                    <div className="itemQt">{data[item]}</div>
+                </div>
+            );
+        } else return null;
+    });
 
     renderTitle = () => (
         <div className="itemDivTitle">
-            <div className="itemTitleName">Ingrediente</div>
+            <div className="itemTitleName">Bolo</div>
             <div className="itemTitleQt">Quantidade</div>
+        </div>
+    );
+
+    renderProfit = (data) => (
+        <div id="profit">
+            Lucro: {data.z}
         </div>
     );
 
@@ -27,6 +49,7 @@ class ResultsTable extends Component {
                 <div id="resultsTableDiv">
                     {this.renderTitle()}
                     {this.renderResults(data)}
+                    {this.renderProfit(data)}
                 </div>
                 <Button
                     variant="outlined"

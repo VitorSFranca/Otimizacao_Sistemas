@@ -102,8 +102,11 @@ class Constraints extends React.Component {
 
   handleChangeValue = () => {
     const{onChangeValue} = this.props;
-    const {ingrediente, quantidade} = this.state;
-    onChangeValue(ingrediente, quantidade);
+    const {ingrediente, quantidade, valor} = this.state;
+    onChangeValue(ingrediente, {
+      qt: parseInt(quantidade),
+      valor: parseInt(valor),
+    });
   }
 
   handleChange = name => event => {

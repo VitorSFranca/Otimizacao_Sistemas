@@ -1,0 +1,17 @@
+{
+  "name": "node_server",
+  "version": "1.0.0",
+  "description": "Backend for OS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vítor Santos França",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "yasmij": "^0.2.6"
+  }
+}

@@ -10,6 +10,10 @@ import './Home.scss';
 import ResultsTable from '../ResultsTable';
 import { API_URL } from '../Config/API_HELPER';
 
+const axiosInstance = axios.create({
+    baseURL: API_URL,
+  });
+
 const styles = theme => ({
     margin: {
       margin: theme.spacing.unit,
@@ -24,8 +28,9 @@ class Home extends Component {
         super(props);
         const { classes } = props;
         this.state = {
+            data:{},
             classes,
-            showResults: true,
+            showResults: false,
             constraints: {},
             totalConstraints: 0,
             values: {}
@@ -83,15 +88,37 @@ class Home extends Component {
         );
     }
 
-    calculateOtimization = () => {
+    createBody = () => {
         const { values } = this.state;
-        this.setState({
-            showResults: true,
-        });
+        return { 
+            leite: values['Leite'] || {qt: 0, valor: 0},
+            ovo: values['Ovos'] || {qt: 0, valor: 0},
+            banana: values['Banana Caturra'] || {qt: 0, valor: 0},
+            acucarRefinado: values['Açúcar Refinado'] || {qt: 0, valor: 0},
+            farinhaDeTrigo: values['Farinha de trigo'] || {qt: 0, valor: 0},
+            fermento: values['Fermento'] || {qt: 0, valor: 0},
+            achocolatado: values['Achocolatado'] || {qt: 0, valor: 0},
+            manteiga: values['Manteiga'] || {qt: 0, valor: 0},
+            leiteCondensado: values['Leite condensado'] || {qt: 0, valor: 0},
+            laranja: values['Laranja'] || {qt: 0, valor: 0},
+            oleo: values['Óleo'] || {qt: 0, valor: 0},
+            acucarCristal: values['Açúcar Cristal'] || {qt: 0, valor: 0},
+            cenoura: values['Cenouras'] || {qt: 0, valor: 0},
+            fuba: values['Fubá'] || {qt: 0, valor: 0},
+            maisena: values['Maisena'] || {qt: 0, valor: 0},
+            queijoBranco: values['Queijo branco'] || {qt: 0, valor: 0},
+            limao: values['Limão'] || {qt: 0, valor: 0},
+            mexerica: values['Mexerica'] || {qt: 0, valor: 0},
+         }
+    }
 
-        axios.get(API_URL)
+    calculateOtimization = () => {
+        axiosInstance.post('/solve', this.createBody())
         .then(res => {
-          console.log(res);
+            this.setState({
+                data: res.data.result,
+                showResults: true,
+            });
         })
     }
 
@@ -100,18 +127,15 @@ class Home extends Component {
             showResults: false,
             constraints: {},
             totalConstraints: 0,
-            values: {}
+            values: {},
+            data: {}
         });
     }
 
-    renderContent = (showResults, classes, constraints) => {
+    renderContent = (showResults, classes, constraints,data) => {
         if(showResults) {
             return <ResultsTable
-                data={[
-                    {ingredient: 'ingrediente1', quantity: '400g'},
-                    {ingredient: 'ingrediente2', quantity: '400g'},
-                    {ingredient: 'ingrediente3', quantity: '400g'},
-                ]}
+                data={data}
                 handleClick={this.backToHome}
                 classes={classes}
             ></ResultsTable>
@@ -146,14 +170,14 @@ class Home extends Component {
     }
 
     render(){
-        const { classes, constraints, showResults} = this.state;
+        const { classes, constraints, showResults, data} = this.state;
         return(
             <div className="home">
                 <div className="header">
                     <h1>Maximização de lucros: Delícias Caseiras</h1>
                 </div>
                 <div className="content">
-                    {this.renderContent(showResults, classes, constraints)}
+                    {this.renderContent(showResults, classes, constraints, data)}
                 </div>
             </div>
         );
