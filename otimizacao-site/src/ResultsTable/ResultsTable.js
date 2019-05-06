@@ -23,7 +23,7 @@ class ResultsTable extends Component {
             return (
                 <div className="itemDiv">
                     <div className="itemName">{this.cakeMapping[item]}</div>
-                    <div className="itemQt">{data[item]}</div>
+                    <div className="itemQt">{Math.floor(data[item]*100)/100}</div>
                 </div>
             );
         } else return null;
@@ -38,7 +38,7 @@ class ResultsTable extends Component {
 
     renderProfit = (data) => (
         <div id="profit">
-            Lucro: {data.z}
+            Lucro: {Math.floor(data.z * 100)/100}
         </div>
     );
 
