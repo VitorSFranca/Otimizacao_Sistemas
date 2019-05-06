@@ -13,43 +13,65 @@ boloBanana
 */
 
 function cakeCost(ingredientes) {
+
+    const unityPrice = {
+        leite: ingredientes.leite.valor/ingredientes.leite.qt || 0,
+        ovo: ingredientes.ovo.valor/ingredientes.ovo.qt || 0,
+        banana: ingredientes.banana.valor/ingredientes.banana.qt || 0,
+        acucarRefinado: ingredientes.acucarRefinado.valor/ingredientes.acucarRefinado.qt || 0,
+        farinhaDeTrigo: ingredientes.farinhaDeTrigo.valor/ingredientes.farinhaDeTrigo.qt || 0,
+        fermento: ingredientes.fermento.valor/ingredientes.fermento.qt || 0,
+        achocolatado: ingredientes.achocolatado.valor/ingredientes.achocolatado.qt || 0,
+        manteiga: ingredientes.manteiga.valor/ingredientes.manteiga.qt || 0,
+        leiteCondensado: ingredientes.leiteCondensado.valor/ingredientes.leiteCondensado.qt || 0,
+        laranja: ingredientes.laranja.valor/ingredientes.laranja.qt || 0,
+        oleo: ingredientes.oleo.valor/ingredientes.oleo.qt || 0,
+        acucarCristal: ingredientes.acucarCristal.valor/ingredientes.acucarCristal.qt || 0,
+        cenoura: ingredientes.cenoura.valor/ingredientes.cenoura.qt || 0,
+        fuba: ingredientes.fuba.valor/ingredientes.fuba.qt || 0,
+        maisena: ingredientes.maisena.valor/ingredientes.maisena.qt || 0,
+        queijoBranco: ingredientes.queijoBranco.valor/ingredientes.queijoBranco.qt || 0,
+        limao: ingredientes.limao.valor/ingredientes.limao.qt || 0,
+        mexerica: ingredientes.mexerica.valor/ingredientes.mexerica.qt || 0,
+    }
+
     return {
-        boloCenouraCalda: ingredientes.cenoura.valor + ingredientes.oleo.valor + ingredientes.acucarRefinado.valor +
-                          ingredientes.fermento.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.leiteCondensado.valor +
-                          ingredientes.achocolatado.valor,
-        boloCenoura: ingredientes.cenoura.valor + ingredientes.oleo.valor + ingredientes.acucarRefinado.valor +
-                     ingredientes.fermento.valor + ingredientes.farinhaDeTrigo.valor,
-        boloChocolateCalda: (ingredientes.leite.valor + ingredientes.ovo.valor + ingredientes.achocolatado.valor +
-                            ingredientes.manteiga.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.acucarRefinado.valor +
-                            ingredientes.fermento.valor + ingredientes.leiteCondensado.valor + ingredientes.achocolatado.valor),
-        boloChocolate: ingredientes.leite.valor + ingredientes.ovo.valor + ingredientes.achocolatado.valor +
-                       ingredientes.manteiga.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.acucarRefinado.valor +
-                       ingredientes.fermento.valor, 
-        boloMexerica: ingredientes.mexerica.valor + ingredientes.ovo.valor + ingredientes.oleo.valor + ingredientes.acucarCristal.valor +
-                      ingredientes.acucarRefinado.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.fermento.valor,
-        boloLaranja: ingredientes.laranja.valor + ingredientes.ovo.valor + ingredientes.oleo.valor + ingredientes.acucarRefinado.valor +
-                     ingredientes.acucarCristal.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.fermento.valor,
-        boloFuba: ingredientes.leite.valor + ingredientes.fuba.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.maisena.valor +
-                  ingredientes.acucarRefinado.valor + ingredientes.queijoBranco.valor + ingredientes.fermento.valor,
-        boloLimao: ingredientes.leite.valor + ingredientes.ovo.valor + ingredientes.manteiga.valor +
-                   ingredientes.acucarRefinado.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.fermento.valor +
-                   ingredientes.limao.valor,
-        boloBanana: ingredientes.leite.valor + ingredientes.ovo.valor + ingredientes.banana.valor + 
-                    ingredientes.acucarRefinado.valor + ingredientes.farinhaDeTrigo.valor + ingredientes.fermento.valor,
+        boloCenouraCalda: unityPrice.cenoura*340 + unityPrice.oleo*240 + unityPrice.acucarRefinado*400 +
+                          unityPrice.fermento*15 + unityPrice.farinhaDeTrigo*360 + unityPrice.leiteCondensado*1 +
+                          unityPrice.achocolatado*100 + unityPrice.ovo*4,
+        boloCenoura: unityPrice.cenoura*340 + unityPrice.oleo*240 + unityPrice.acucarRefinado*400 +
+                     unityPrice.fermento*15 + unityPrice.farinhaDeTrigo*360 + unityPrice.ovo*4,
+        boloChocolateCalda: unityPrice.leite*250 + unityPrice.ovo*5 + unityPrice.achocolatado*150 +
+                            unityPrice.manteiga*80 + unityPrice.farinhaDeTrigo*240 + unityPrice.acucarRefinado*300 +
+                            unityPrice.fermento*15 + unityPrice.leiteCondensado*1,
+        boloChocolate: unityPrice.leite*250 + unityPrice.ovo*5 + unityPrice.achocolatado*50 +
+                       unityPrice.manteiga*80 + unityPrice.farinhaDeTrigo*240 + unityPrice.acucarRefinado*300 +
+                       unityPrice.fermento*15 + unityPrice.leiteCondensado*1, 
+        boloMexerica: unityPrice.mexerica*4 + unityPrice.ovo*4 + unityPrice.oleo*240 + unityPrice.acucarCristal*100 +
+                      unityPrice.acucarRefinado*400 + unityPrice.farinhaDeTrigo*240 + unityPrice.fermento*15,
+        boloLaranja: unityPrice.laranja*4 + unityPrice.ovo*4 + unityPrice.oleo*240 + unityPrice.acucarRefinado*400 +
+                     unityPrice.acucarCristal*100 + unityPrice.farinhaDeTrigo*240 + unityPrice.fermento*15,
+        boloFuba: unityPrice.leite*1000 + unityPrice.fuba*120 + unityPrice.farinhaDeTrigo*360 + unityPrice.maisena*30 +
+                  unityPrice.acucarRefinado*400 + unityPrice.queijoBranco*228 + unityPrice.fermento*15,
+        boloLimao: unityPrice.leite*190 + unityPrice.ovo*3 + unityPrice.manteiga*160 +
+                   unityPrice.acucarRefinado*500 + unityPrice.farinhaDeTrigo*240 + unityPrice.fermento*15 +
+                   unityPrice.limao*1,
+        boloBanana: unityPrice.leite*250 + unityPrice.ovo*4 + unityPrice.banana*6 + 
+                    unityPrice.acucarRefinado*400 + unityPrice.farinhaDeTrigo*360 + unityPrice.fermento*15,
     }
 }
 
 function calcProfit(cakeCost) {
     return {
         boloCenouraCalda: (40-cakeCost.boloCenouraCalda),
-        boloCenoura: (30-cakeCost.boloBanana),
-        boloChocolateCalda: (44-cakeCost.boloChocolateCalda),
-        boloChocolate: (34-cakeCost.boloChocolate),
+        boloCenoura: (35-cakeCost.boloBanana),
+        boloChocolateCalda: (45-cakeCost.boloChocolateCalda),
+        boloChocolate: (40-cakeCost.boloChocolate),
         boloMexerica: (25-cakeCost.boloMexerica),
         boloLaranja: (25-cakeCost.boloLaranja),
         boloFuba: (35-cakeCost.boloFuba),
-        boloLimao: (28-cakeCost.boloLimao),
-        boloBanana: (55-cakeCost.boloBanana)
+        boloLimao: (35-cakeCost.boloLimao),
+        boloBanana: (30-cakeCost.boloBanana)
     }
 }
 
@@ -60,7 +82,6 @@ function setSignal(value) {
 module.exports = {
     solve: entry => {
         const cakeProfit = calcProfit(cakeCost(entry));
-        console.log(cakeCost(entry));
         const ing = {
             farinhaDeTrigo: entry.farinhaDeTrigo.qt,
             ovo: entry.ovo.qt,
@@ -72,10 +93,14 @@ module.exports = {
             limao: entry.limao.qt,
             manteiga: entry.manteiga.qt,
             mexerica: entry.mexerica.qt,
-            farinhaDeTrigo: entry.farinhaDeTrigo.qt,
             acucarCristal: entry.acucarCristal.qt,
             oleo: entry.oleo.qt,
             fermento: entry.fermento.qt,
+            leiteCondensado: entry.leiteCondensado.qt,
+            laranja: entry.laranja.qt,
+            fuba: entry.fuba.qt,
+            maisena: entry.maisena.qt,
+            queijoBranco: entry.queijoBranco.qt,
         };
         input = {
             type: 'maximize',
@@ -85,20 +110,24 @@ module.exports = {
                         ${setSignal(cakeProfit.boloFuba)}x7${setSignal(cakeProfit.boloLimao)}x8
                         ${setSignal(cakeProfit.boloBanana)}x9`,
             constraints: [
-                `360x1 + 240x2 + 240x3 + 240x4 + 360x5 + 360x6 + 360x7 + 240x8 + 240x9 <= ${ing.farinhaDeTrigo}`, // Farinha de trigo
-                `400x1 + 300x2 + 300x3 + 400x4 + 360x5 + 400x6 + 400x7 + 400x8 + 5000x9 <= ${ing.acucarRefinado}`, // Acuca refinado
-                `1000x2 + 300x3 + 400x4 + 360x5 + 400x6 + 400x7 + 400x8 + 5000x9 <= ${ing.leite}`, // Leite
-                `4x1 + 5x2 + 5x3 + 4x4 + 4x9 <= ${ing.ovo}`, // Ovo 
-                `340x5 + 340x6 <= ${ing.cenoura}`, // Cenoura
-                `6x1 <= ${ing.banana}`, // Banana caturra
-                `15x1 + 15x2 + 15x3 + 15x4 + 15x5 + 15x6 + 15x7 + 15x8 + 15x9 <= ${ing.fermento}`, // Fermento
-                `50x2 + 50x3 <= ${ing.achocolatado}`, // Achocolatado
-                `1x8 <= ${ing.limao}`, // Limao
-                `80x2 + 80x3 +160x8 + 240x9 <= ${ing.manteiga}`, // Manteiga
-                `4x9 <= ${ing.mexerica}`, // Mexirica
-                `360x1 + 240x2 + 240x3 + 240x4 + 360x5 + 360x6 + 360x7 + 240x8 + 240x9 <= ${ing.farinhaDeTrigo}`, // Farinha de Trigo
-                `100x4 + 100x9 <= ${ing.acucarCristal}`, // Acucar Cristal
-                `240x4 + 240x5 + 240x6 + 240x9 <= ${ing.oleo}` // Oleo
+                `360x1 + 360x2 + 240x3 + 240x4 + 240x5 + 240x6 + 360x7 + 240x8 + 360x9  <= ${ing.farinhaDeTrigo}`, // Farinha de trigo em gramas
+                `400x1 + 400x2 + 300x3 + 300x4 + 400x5 + 400x6 + 400x7 + 500x8 + 400x9  <= ${ing.acucarRefinado}`, // Acucar refinado em gramas
+                `250x3 + 250x4 + 1000x7 + 190x8 + 250x9 <= ${ing.leite}`, // Leite em ml
+                `3x1 + 3x2 + 5x3 + 5x4 + 4x5 +  4x6 + 3x8 + 4x9<= ${ing.ovo}`, // Ovo unidades
+                `340x1 + 340x2 <= ${ing.cenoura}`, // Cenoura em gramas
+                `6x9 <= ${ing.banana}`, // Banana caturra unidades
+                `15x1 + 15x2 + 15x3 + 15x4 + 15x5 + 15x6 + 15x7 + 15x8 + 15x9 <= ${ing.fermento}`, // Fermento em gramas
+                `100x1 + 150x3 + 50x4 <= ${ing.achocolatado}`, // Achocolatado em gramas
+                `1x8 <= ${ing.limao}`, // Limao unidade
+                `80x3 + 80x4 + 160x8 <= ${ing.manteiga}`, // Manteiga em gramas
+                `4x5 <= ${ing.mexerica}`, // Mexirica unidades
+                `100x5 + 100x6 <= ${ing.acucarCristal}`, // Acucar Cristal em gramas
+                `240x1 + 240x2 + 240x5 + 240x6 <= ${ing.oleo}`, // Oleo
+                `1x1 + 1x3 <= ${ing.leiteCondensado}`, // Leite condensado unidade
+                `4x6 <= ${ing.laranja}`, // Laranja unidade
+                `120x7 <=${ing.fuba}`, // Fuba em gramas
+                `30x7 <=${ing.maisena}`, // Maisena em gramas
+                `228x7 <=${ing.queijoBranco}`, // Queijo Branco em gramas
             ]
         }
 

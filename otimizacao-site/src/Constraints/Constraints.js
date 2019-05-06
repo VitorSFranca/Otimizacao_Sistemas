@@ -34,6 +34,27 @@ const ingredients = [
     'Mexerica'
 ];
 
+const ingredientesUnity = {
+    'Leite': 'ml',
+    'Ovos': 'Un.',
+    'Banana Caturra': 'Un.',
+    'Açúcar Refinado': 'g',
+    'Farinha de trigo': 'g',
+    'Fermento': 'g',
+    'Achocolatado': 'g',
+    'Manteiga': 'g',
+    'Leite condensado': 'Un.',
+    'Laranja': 'Un.',
+    'Óleo': 'ml',
+    'Açúcar Cristal': 'g',
+    'Cenouras': 'g',
+    'Fubá': 'g',
+    'Maisena': 'g',
+    'Queijo branco': 'g',
+    'Limão': 'Un.',
+    'Mexerica': 'Un.'
+}
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -135,6 +156,11 @@ class Constraints extends React.Component {
       return menuItens
   }
 
+  renderQuantidade = () => {
+    const unity = ingredientesUnity[this.state.ingrediente] ? `(${ingredientesUnity[this.state.ingrediente]})` : '';
+    return `Quantidade ${unity}`
+  }
+
   render() {
     const { classes, isDisabled } = this.props;
 
@@ -154,7 +180,7 @@ class Constraints extends React.Component {
             </FormControl>
             <TextField
                 id="outlined-number"
-                label="Quantidade"
+                label={this.renderQuantidade()}
                 value={this.state.quantidade}
                 onChange={this.handleChange('quantidade')}
                 type="number"
