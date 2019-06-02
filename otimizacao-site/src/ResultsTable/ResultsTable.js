@@ -18,12 +18,27 @@ class ResultsTable extends Component {
         x9: 'Bolo de Banana'
     }
 
+    getMediumQt = value => {
+        return Math.floor((value%1/0.5));
+    }
+
+    getSmallQt = value => {
+        return Math.floor((value%1 - this.getMediumQt(value)) / 0.25);
+    }
+
+    getCupCakeQt = value => {
+        return Math.floor((value%1 - (0.25*this.getSmallQt(value) + 0.5*this.getMediumQt(value)))*100)/100;
+    }
+
     renderResults = data => Object.keys(data).map((item) => {
         if(this.cakeMapping[item]) {
             return (
                 <div className="itemDiv">
                     <div className="itemName">{this.cakeMapping[item]}</div>
-                    <div className="itemQt">{Math.floor(data[item]*100)/100}</div>
+                    <div className="itemQt itemQtBig"><span className="qtText">{Math.round(data[item])}</span></div>
+                    <div className="itemQt itemQtMedium"><span className="qtText">{this.getMediumQt(data[item])}</span></div>
+                    <div className="itemQt itemQtSmall"><span className="qtText">{this.getSmallQt(data[item])}</span></div>
+                    <div className="itemQt itemQtCupCake"><span className="qtText">{this.getCupCakeQt(data[item])}</span></div>
                 </div>
             );
         } else return null;
@@ -32,7 +47,10 @@ class ResultsTable extends Component {
     renderTitle = () => (
         <div className="itemDivTitle">
             <div className="itemTitleName">Bolo</div>
-            <div className="itemTitleQt">Quantidade</div>
+            <div className="itemTitleBigQt">Quantidade Grande</div>
+            <div className="itemTitleMediumQt">Quantidade Médio</div>
+            <div className="itemTitleSmallQt">Quantidade Pequeno</div>
+            <div className="itemTitleCupCake">Quantidade CupCake</div>
         </div>
     );
 

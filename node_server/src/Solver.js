@@ -64,7 +64,7 @@ function cakeCost(ingredientes) {
 function calcProfit(cakeCost) {
     return {
         boloCenouraCalda: (40-cakeCost.boloCenouraCalda),
-        boloCenoura: (35-cakeCost.boloBanana),
+        boloCenoura: (35-cakeCost.boloCenoura),
         boloChocolateCalda: (45-cakeCost.boloChocolateCalda),
         boloChocolate: (40-cakeCost.boloChocolate),
         boloMexerica: (25-cakeCost.boloMexerica),
@@ -104,12 +104,31 @@ module.exports = {
         };
         input = {
             type: 'maximize',
+            // objective: '30.828333333333333x1+27.17066666666667x2+35.38033333333333x3+31.71366666666667x4+19.982666666666667x5+20.249333333333333x6+24.688000000000002x7+24.524x8+24.550666666666668x9',
             objective: `${setSignal(cakeProfit.boloCenouraCalda)}x1${setSignal(cakeProfit.boloCenoura)}x2
                         ${setSignal(cakeProfit.boloChocolateCalda)}x3${setSignal(cakeProfit.boloChocolate)}x4
                         ${setSignal(cakeProfit.boloMexerica)}x5${setSignal(cakeProfit.boloLaranja)}x6
                         ${setSignal(cakeProfit.boloFuba)}x7${setSignal(cakeProfit.boloLimao)}x8
                         ${setSignal(cakeProfit.boloBanana)}x9`,
             constraints: [
+                // '360x1 + 360x2 + 240x3 + 240x4 + 240x5 + 240x6 + 360x7 + 240x8 + 360x9  <= 10000',
+                // '400x1 + 400x2 + 300x3 + 300x4 + 400x5 + 400x6 + 400x7 + 500x8 + 400x9  <= 6000',
+                // '250x3 + 250x4 + 1000x7 + 190x8 + 250x9 <= 10000',
+                // '3x1 + 3x2 + 5x3 + 5x4 + 4x5 +  4x6 + 3x8 + 4x9<= 30',
+                // '340x1 + 340x2 <= 400',
+                // '6x9 <= 15',
+                // '15x1 + 15x2 + 15x3 + 15x4 + 15x5 + 15x6 + 15x7 + 15x8 + 15x9 <= 300',
+                // '100x1 + 150x3 + 50x4 <= 1200',
+                // '1x8 <= 10',
+                // '80x3 + 80x4 + 160x8 <= 400',
+                // '4x5 <= 10',
+                // '100x5 + 100x6 <= 5000',
+                // '240x1 + 240x2 + 240x5 + 240x6 <= 2000',
+                // '1x1 + 1x3 <= 1000',
+                // '4x6 <= 15',
+                // '120x7 <=1000',
+                // '30x7 <=500',
+                // '228x7 <=1000'
                 `360x1 + 360x2 + 240x3 + 240x4 + 240x5 + 240x6 + 360x7 + 240x8 + 360x9  <= ${ing.farinhaDeTrigo}`, // Farinha de trigo em gramas
                 `400x1 + 400x2 + 300x3 + 300x4 + 400x5 + 400x6 + 400x7 + 500x8 + 400x9  <= ${ing.acucarRefinado}`, // Acucar refinado em gramas
                 `250x3 + 250x4 + 1000x7 + 190x8 + 250x9 <= ${ing.leite}`, // Leite em ml
